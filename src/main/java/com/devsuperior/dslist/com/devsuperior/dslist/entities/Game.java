@@ -19,7 +19,12 @@ public class Game {
     private String platforms;
     private Double score;
     private String imgUrl;
+    @Column(columnDefinition = "TEXT")
     private String shortDescription;
+    // O item String pode ser algo de até 4 GB, porém, se não colocamos nada a JPA vai entender que é pra mapear ela
+    // Pra um campo no banco de até 255 caracters. Daí temos que usar um macete pra e a JPA genre como um campo de texto
+    // E não um var char de 255 caracteres.
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
     public Game(){
